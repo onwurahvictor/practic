@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process — Practic Concerns Ltd</title>
+<meta name="description" content="How a Practic Concerns project runs: brief, first build, iterate, deliver — four working handoffs, never one big reveal.">
+<meta name="theme-color" content="#0D2340">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="grid-bg"></div>
+<header>
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">PC</span>
+      <span class="brand-text">Practic Concerns<span class="brand-suffix"> Ltd</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" >Home</a>
+      <a href="services.html" >Services</a>
+      <a href="process.html" class=" nav-active">Process</a>
+      <a href="work.html" >Work</a>
+      <a href="contact.html" class="nav-cta">Start a project</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="index.html" >Home</a>
+      <a href="services.html" >Services</a>
+      <a href="process.html" class=" nav-active">Process</a>
+      <a href="work.html" >Work</a>
+      <a href="contact.html" class="nav-cta">Start a project</a>
+  </nav>
+</header>
+<main id="top">
+
+  <section class="page-header">
+    <div class="wrap">
+      <span class="eyebrow reveal">How a project runs</span>
+      <h1 class="page-h1 reveal">Four working handoffs.<br>Never one big reveal.</h1>
+      <p class="page-lede reveal">No months-long build-up to a single launch. You see working software at every stage, and every round moves forward — nothing goes backward.</p>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="wrap">
+      <ol class="process-list">
+        <li class="reveal">
+          <span class="process-num">1</span>
+          <div>
+            <h3>Brief</h3>
+            <p>You tell us what the business actually needs — not a spec document, just the real problem.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="process-num">2</span>
+          <div>
+            <h3>First build</h3>
+            <p>A working version, fast — real pages, real function, something you can click through and react to.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="process-num">3</span>
+          <div>
+            <h3>Iterate</h3>
+            <p>You give real feedback, we make real changes. Every round stays fully working — nothing goes backward.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="process-num">4</span>
+          <div>
+            <h3>Deliver</h3>
+            <p>A live site, ready to use, handed over with what you need to keep running it.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-band-inner reveal">
+      <h2>Ready for a first build?</h2>
+      <a class="btn-primary" href="contact.html">Start a project</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="footer-block">
+      <span class="brand-mark small">PC</span>
+      <span>Practic Concerns Ltd</span>
+    </div>
+    <div class="footer-meta">
+      <span>© <span id="year"></span> Practic Concerns Ltd</span>
+      <a href="mailto:practicconcerns@gmail.com">practicconcerns@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

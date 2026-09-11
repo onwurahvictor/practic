@@ -1,0 +1,17 @@
+{
+  "name": "practic-concerns-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Practic Concerns Ltd — marketing site + work-order REST API (Netlify Functions + PostgreSQL).",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "express": "^4.22.2",
+    "pg": "^8.23.0",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.36.0"
+  }
+}
