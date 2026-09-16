@@ -4,7 +4,7 @@ Static multi-page site (blueprint/work-order aesthetic) with a real backend:
 a Node.js/Express REST API running as a Netlify Function, backed by PostgreSQL.
 
 ## Pages
-`index.html · services.html · process.html · stack.html · work.html · contact.html · admin.html`
+`index.html · services.html · process.html · work.html · contact.html · admin.html`
 
 ## API
 | Method | Path                | Auth              | Purpose                        |
@@ -13,7 +13,13 @@ a Node.js/Express REST API running as a Netlify Function, backed by PostgreSQL.
 | GET    | `/api/enquiries`    | `x-admin-token`   | List enquiries (newest first)   |
 | PATCH  | `/api/enquiries/:id`| `x-admin-token`   | Update status: `new`/`handled`  |
 
-Code lives in `netlify/functions/api.js` (Express + `serverless-http`) and `netlify/functions/db.js` (pg Pool).
+Every `POST /api/contact` does two things: saves the enquiry to Postgres, then
+sends a notification email via Resend. The email is best-effort — if it fails,
+the enquiry is still saved and the form still shows success to the visitor.
+
+Code lives in `netlify/functions/api.js` (Express + `serverless-http`) and
+`netlify/functions/db.js` (pg Pool). `email.js` (Resend) sits in the project
+root alongside the site pages.
 
 ## One-time setup
 
@@ -35,11 +41,22 @@ Code lives in `netlify/functions/api.js` (Express + `serverless-http`) and `netl
    openssl rand -hex 24
    ```
 
-4. **Set environment variables in Netlify**: Site settings → Environment variables:
+4. **Create a free Resend account** at [resend.com](https://resend.com) and grab
+   an API key from the dashboard (API Keys → Create API Key). Until you verify
+   your own domain there, Resend only lets you send *from* their shared
+   `onboarding@resend.dev` address *to* the email you signed up with — which
+   is exactly what's needed here, since notifications just need to land in
+   your own inbox.
+
+5. **Set environment variables in Netlify**: Site settings → Environment variables:
    - `DATABASE_URL` — your connection string from step 1
    - `ADMIN_TOKEN` — the token from step 3
+   - `RESEND_API_KEY` — the key from step 4
+   - `NOTIFY_EMAIL` — the address that should receive new enquiries (must be
+     the same address your Resend account is signed up with, until a domain
+     is verified)
 
-5. **Install dependencies and deploy**:
+6. **Install dependencies and deploy**:
    ```bash
    npm install
    netlify deploy --prod
@@ -49,7 +66,7 @@ Code lives in `netlify/functions/api.js` (Express + `serverless-http`) and `netl
 ## Local development
 
 ```bash
-cp .env.example .env   # fill in DATABASE_URL and ADMIN_TOKEN
+cp .env.example .env   # fill in DATABASE_URL, ADMIN_TOKEN, RESEND_API_KEY, NOTIFY_EMAIL
 npm install
 netlify dev             # serves the site + functions together at localhost:8888
 ```
